@@ -14,10 +14,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'bloc/rand_fact_bloc.dart';
 
 late Box box;
-late CatFactsRecordsService recordsService = CatFactsRecordsService()..init();
+late CatFactsRecordsService recordsService = CatFactsRecordsService();
 
 Future<void> main() async {
   await Hive.initFlutter();
+  await recordsService.init();
 
   final factRepository = FactRepository(factApiClient: FactApiClient(Dio()));
   final imageRepository =
